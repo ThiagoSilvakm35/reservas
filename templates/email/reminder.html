@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembrete de Reserva</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 3px solid #4F81BD;
+        }
+        .header h1 {
+            color: #4F81BD;
+            margin: 0;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .booking-details {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .booking-details p {
+            margin: 5px 0;
+        }
+        .reminder-box {
+            font-size: 18px;
+            text-align: center;
+            color: #d35400;
+            padding: 15px;
+            background-color: #fef5e7;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #d35400;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4F81BD;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Reservas Online</h1>
+        <p>Lembrete de Reserva</p>
+    </div>
+    
+    <div class="content">
+        <p>Olá {{ user.first_name }},</p>
+        
+        <div class="reminder-box">
+            <p>Lembramos que você tem uma reserva marcada para <strong>AMANHÃ</strong>!</p>
+        </div>
+        
+        <p>Detalhes da sua reserva com <strong>{{ booking.provider_name }}</strong>:</p>
+        
+        <div class="booking-details">
+            <p><strong>Serviço:</strong> {{ booking.service_name }}</p>
+            <p><strong>Data:</strong> {{ booking.date }}</p>
+            <p><strong>Horário:</strong> {{ booking.time }}</p>
+            <p><strong>Prestador:</strong> {{ booking.provider_name }}</p>
+            <p><strong>Código de Confirmação:</strong> {{ booking.code }}</p>
+        </div>
+        
+        <p>Caso não possa comparecer, pedimos que cancele sua reserva com pelo menos 4 horas de antecedência para que outra pessoa possa utilizar o horário.</p>
+        
+        <div style="text-align: center;">
+            <a href="https://{{ site_url }}/reservas/{{ booking.id }}" class="button">Gerenciar Reserva</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Este é um e-mail automático, por favor não responda. Se precisar de ajuda, entre em contato pelo e-mail suporte@reservasonline.com</p>
+        <p>&copy; 2025 Reservas Online. Todos os direitos reservados.</p>
+    </div>
+</body>
+</html> 
